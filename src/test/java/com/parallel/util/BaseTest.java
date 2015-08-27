@@ -58,8 +58,7 @@ public class BaseTest implements Runnable {
 			capabilities.setCapability("deviceName", deviceName);
 			capabilities.setCapability("platformName", "android");
 			capabilities.setCapability(CapabilityType.VERSION, osVersion);
-			capabilities.setCapability("app",
-					"/Users/saikrisv/Documents/workspace/AppiumParallelAndroid/build/AndroidCalculator.apk");
+			capabilities.setCapability("app", System.getProperty("user.dir") + "/build/AndroidCalculator.apk");
 			capabilities.setCapability("udid", deviceId);
 
 			this.driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:" + port + "/wd/hub"),
