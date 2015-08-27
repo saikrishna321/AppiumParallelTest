@@ -28,42 +28,44 @@ public class BaseTest implements Runnable {
 	static Map<String, String> devices = new HashMap<String, String>();
 	static DeviceConfiguration deviceConf = new DeviceConfiguration();
 
-	public BaseTest(){
+	public BaseTest() {
 		try {
 			devices = deviceConf.getDivces();
-			deviceCount = devices.size()/3;
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public BaseTest(int i){
-		int deviceNumber = (i+1);
-		this.deviceId = devices.get("deviceID"+deviceNumber);
-		this.deviceName = devices.get("deviceName"+deviceNumber);
-		this.osVersion = devices.get("osVersion"+deviceNumber);
-	}
-	
-
-	public void createDriver() {
-		try {
-		
-			port = appiumMan.startAppium(); // Start appium server
-       
-			// create appium driver instance
-			DesiredCapabilities capabilities = DesiredCapabilities.android();
-			capabilities.setCapability("deviceName", deviceName);
-			capabilities.setCapability("platformName", "android");
-			capabilities.setCapability(CapabilityType.VERSION, osVersion);
-			capabilities.setCapability("app", "/Users/saikrisv/Documents/workspace/AppiumParallelAndroid/build/AndroidCalculator.apk");
-			capabilities.setCapability("udid", deviceId);
-
-			this.driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:" + port + "/wd/hub"), capabilities);
+			deviceCount = devices.size() / 3;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	public BaseTest(int i) {
+		int deviceNumber = (i + 1);
+		this.deviceId = devices.get("deviceID" + deviceNumber);
+		this.deviceName = devices.get("deviceName" + deviceNumber);
+		this.osVersion = devices.get("osVersion" + deviceNumber);
+	}
+
+	public void createDriver() {
+	    int i =0;
+		try {
+			port = appiumMan.startAppium(); // Start appium server
+			// create appium driver instance
+			System.out.println("Created Appium Session");
+			DesiredCapabilities capabilities = DesiredCapabilities.android();
+			capabilities.setCapability("deviceName", deviceName);
+			capabilities.setCapability("platformName", "android");
+			capabilities.setCapability(CapabilityType.VERSION, osVersion);
+			capabilities.setCapability("app",
+					"/Users/saikrisv/Documents/workspace/AppiumParallelAndroid/build/AndroidCalculator.apk");
+			capabilities.setCapability("udid", deviceId);
+
+			this.driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:" + port + "/wd/hub"),
+					capabilities);
+			System.out.println("Times the method is called"+i);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void destroyDriver() {
 		driver.quit();
@@ -92,7 +94,6 @@ public class BaseTest implements Runnable {
 			// Get extended class name
 			c = Class.forName(className);
 			System.out.println("class : " + c);
-
 			// Get start method
 			Method[] m = c.getMethods();
 			System.out.println("methods: " + m.length);
@@ -130,6 +131,6 @@ public class BaseTest implements Runnable {
 
 	public void run() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

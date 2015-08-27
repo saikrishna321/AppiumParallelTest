@@ -39,10 +39,4 @@ public class CommandPrompt {
 		return allLine;
 		
 	}
-
-	public static void main(String[] args) throws Exception {
-		CommandPrompt cmd = new CommandPrompt();
-		String appium="/usr/bin/adb devices";
-		cmd.runCommand(appium);
-	}
 }
