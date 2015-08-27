@@ -12,11 +12,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
 public class BaseTest implements Runnable {
-	protected AndroidDriver<MobileElement> driver;
+	protected AppiumDriver<MobileElement> driver;
 	protected BaseTest[] deviceThreads;
 	protected int numOfDevices;
 	protected String deviceId;

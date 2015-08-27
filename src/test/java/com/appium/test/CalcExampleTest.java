@@ -37,6 +37,10 @@ public class CalcExampleTest extends BaseTest {
 		}
 		String num = driver.findElement(By.xpath("//android.widget.EditText[@index=0]")).getText();
 		System.out.println("Result : " + num);
+		driver.findElement(By.id("com.android2.calculator3:id/digit5")).click();
+		driver.findElement(By.id("com.android2.calculator3:id/plus")).click();
+		driver.findElement(By.id("com.android2.calculator3:id/digit9")).click();
+		driver.findElement(By.id("com.android2.calculator3:id/equal")).click();
 		driver.closeApp();
 
 	}
