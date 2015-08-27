@@ -37,6 +37,7 @@ public class CalcExampleTest extends BaseTest {
 		}
 		String num = driver.findElement(By.xpath("//android.widget.EditText[@index=0]")).getText();
 		System.out.println("Result : " + num);
+		driver.closeApp();
 
 	}
 
@@ -47,16 +48,7 @@ public class CalcExampleTest extends BaseTest {
 
 	@Test
 	public void testApp() {
-		execute();
-		createDriver();
 		performOperations();
-		destroyDriver();
-
 	}
-	// public static void main(String[] args) {
-	// // Create object
-	// CalcExampleTest calc = new CalcExampleTest();
-	// calc.execute();
-	// }
 
 }

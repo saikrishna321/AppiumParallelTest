@@ -1,15 +1,11 @@
 package com.parallel.util;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 /**
  * Appium Manager - this class contains method to start and stops appium server
  */
 public class AppiumManager {
 
 	CommandPrompt cp = new CommandPrompt();
-	Process p;
 	AvailabelPorts ap = new AvailabelPorts();
 
 	/**
@@ -32,8 +28,9 @@ public class AppiumManager {
 		String command = "appium --session-override -p " + port + " --chromedriver-port " + chromePort + " -bp "
 				+ bootstrapPort;
 		System.out.println(command);
+
 		String output = cp.runCommand(command);
-		//System.out.println(output);
+		
 
 		if (output.contains("not")) {
 			System.out.println("\nAppium is not installed");

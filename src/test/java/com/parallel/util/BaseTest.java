@@ -9,6 +9,8 @@ import java.util.Map;
 
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -43,8 +45,9 @@ public class BaseTest implements Runnable {
 		this.deviceName = devices.get("deviceName" + deviceNumber);
 		this.osVersion = devices.get("osVersion" + deviceNumber);
 	}
-
+	  @BeforeClass
 	public void createDriver() {
+		  execute();
 	    int i =0;
 		try {
 			port = appiumMan.startAppium(); // Start appium server
@@ -66,9 +69,9 @@ public class BaseTest implements Runnable {
 			e.printStackTrace();
 		}
 	}
-
+    @AfterClass
 	public void destroyDriver() {
-		driver.quit();
+		this.driver.quit();
 		try {
 			deviceConf.stopADB();
 		} catch (Exception e) {
@@ -82,7 +85,7 @@ public class BaseTest implements Runnable {
 			t.start();
 		}
 	}
-
+  
 	public <c> void execute() {
 		Class<?> c;
 		try {
