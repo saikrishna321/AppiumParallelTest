@@ -27,12 +27,22 @@ public class CommandPrompt {
 		String allLine = "";
 		int i = 1;
 		while ((line = r.readLine()) != null) {
-			System.out.println(i+". "+line);
-			allLine = allLine + "" + line + "\n";
+			 if (line.isEmpty()){
+				 break;
+			 }
+			allLine = allLine + "" + line + "\n";	
 			if (line.contains("Console LogLevel: debug"))
 				break;
 			i++;
 		}
+		System.out.println(allLine);
 		return allLine;
+		
+	}
+
+	public static void main(String[] args) throws Exception {
+		CommandPrompt cmd = new CommandPrompt();
+		String appium="/usr/bin/adb devices";
+		cmd.runCommand(appium);
 	}
 }

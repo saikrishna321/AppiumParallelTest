@@ -7,6 +7,7 @@ import com.parallel.util.BaseTest;
 
 public class CalcExampleTest extends BaseTest {
 	public CalcExampleTest() {
+		execute();
 	}
 
 	public CalcExampleTest(int deviceNum) {
@@ -38,8 +39,9 @@ public class CalcExampleTest extends BaseTest {
 
 	@Test
 	public void testRunnerAppium() {	
-		execute();
-		run();
+		
+		createDriver();
+		//performOperations();
 	}
 
 }

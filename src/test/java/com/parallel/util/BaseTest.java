@@ -58,7 +58,7 @@ public class BaseTest implements Runnable {
 			capabilities.setCapability("app", "/Users/saikrisv/Documents/workspace/AppiumParallelAndroid/build/AndroidCalculator.apk");
 			capabilities.setCapability("udid", deviceId);
 
-			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:" + port + "/wd/hub"), capabilities);
+			this.driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:" + port + "/wd/hub"), capabilities);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -111,12 +111,12 @@ public class BaseTest implements Runnable {
 			System.out.println("deviceCount: " + deviceCount);
 			// Create array of objects
 			Object obj = Array.newInstance(c, deviceCount);
-			for (int i = 0; i < deviceCount; i++) {
+			for (int i = 1; i < deviceCount; i++) {
 				Object val = cons.newInstance(i);
 				Array.set(obj, i, val);
 			}
 
-			for (int i = 0; i < deviceCount; i++) {
+			for (int i = 1; i < deviceCount; i++) {
 				Object val = Array.get(obj, i);
 				m[startMethod].invoke(val);
 			}
